@@ -33,7 +33,7 @@ jobs:
         run: |
           KUROCO_FRONT_JSON=$(node kuroco_front.js)
           if [ -z "$KUROCO_FRONT_JSON" ]; then
-            exit(1);
+            exit 1;
           fi
           echo "$KUROCO_FRONT_JSON" > static/kuroco_front.json
       - name: Build
@@ -73,9 +73,9 @@ jobs:
         run: npm ci
       - name: Generate kuroco_front.json
         run: |
-          KUROCO_FRONT_JSON=$(node kuroco_front.js)
+          KUROCO_FRONT_JSON="$(node kuroco_front.js)"
           if [ -z "$KUROCO_FRONT_JSON" ]; then
-            exit(1);
+            exit 1;
           fi
           echo "$KUROCO_FRONT_JSON" > static/kuroco_front.json
       - name: Build
