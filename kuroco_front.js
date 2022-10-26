@@ -9,7 +9,7 @@ const kurocoFrontJson = {
     },
   ],
   redirects: [
-    {"source": "/static_page/", "destination": '/static_page/'}
+    {"source": "/STATIC_PAGE/", "destination": '/static_page/'}
   ],
   redirects_by_ie: [],
   proxies: [],
