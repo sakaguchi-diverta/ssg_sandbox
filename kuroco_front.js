@@ -10,6 +10,10 @@ const kurocoFrontJson = {
   ],
   redirects: [
     {"source": '/STATIC_PAGE/(.*)', 'destination': '/static_page/$1'},
+    {"source": '^/_STATIC_PAGE/(.*)', 'destination': '/static_page/$1'},
+    {"source": '/__STATIC_PAGE/(.*)', 'destination': '/static_page/$1'},
+    {"source": "^/old_path/", "destination": "/new_path/"},
+    {"source": "/_old_path/", "destination": "/new_path/"},
   ],
   redirects_by_ie: [],
   proxies: [],
