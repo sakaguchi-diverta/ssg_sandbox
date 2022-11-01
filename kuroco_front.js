@@ -8,7 +8,11 @@ const kurocoFrontJson = {
       destination: '/index.html',
     },
   ],
-  redirects: [],
+  redirects: [
+    {"source": '/STATIC_PAGE/(.*)', 'destination': '/static_page/$1'},
+    {"source": "^/old_path/", "destination": "/new_path/"},
+    {"source": "/_old_path/", "destination": "/new_path/"},
+  ],
   redirects_by_ie: [],
   proxies: [],
   basic: [],
@@ -27,6 +31,9 @@ const kurocoFrontJson = {
       console.error(err)
       process.exit(1)
     })
-  kurocoFrontJson.redirects = redirectsTable.list
+  kurocoFrontJson.redirects = [
+    ...kurocoFrontJson.redirects,
+    ...redirectsTable.list
+  ]
   process.stdout.write(JSON.stringify(kurocoFrontJson, null, 4))
 })()
