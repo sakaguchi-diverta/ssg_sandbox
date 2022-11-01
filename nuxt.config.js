@@ -1,5 +1,8 @@
+import axios from 'axios'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
+  ssr: true,
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -47,6 +50,16 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   generate: {
-    routes: ['/static_page/1'],
+    routes: async () => {
+      const pages = await axios.get(
+        'https://sakaguchi-kuroco.a.kuroco.app/rcms-api/5/static_page'
+      )
+      return pages?.data?.list.map((topics) => {
+        return {
+          route: '/static_page/' + topics.slug,
+          payload: topics,
+        }
+      })
+    },
   },
 }
