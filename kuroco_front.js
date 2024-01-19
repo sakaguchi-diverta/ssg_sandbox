@@ -4,11 +4,11 @@ const fetch = (...args) =>
 const kurocoFrontJson = {
   rewrites: [
     {
-      source: '/',
+      source: '^/$',
       destination: '/index.html',
     },
     {
-      source: '/csr/test/',
+      source: '^/csr/test/$',
       destination: '/index.html',
     },
   ],
